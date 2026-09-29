@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Farside: we build the ships that leave</title>
+    <meta name="description" content="Farside builds reusable starships by the sea, launches them at dawn, and sends them across the solar system." />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23e3a63b' stroke-width='3'/%3E%3Ccircle cx='27' cy='9' r='3' fill='%23e3a63b'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,50..150,100..900;1,50..150,100..900&family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas id="gl" aria-hidden="true"></canvas>
+
+    <div class="loader" id="loader" role="status" aria-label="Loading">
+      <p class="loader-mark">Farside</p>
+      <div class="loader-bar"><span id="loaderBar"></span></div>
+    </div>
+
+    <a class="skip" href="#build">Skip to content</a>
+
+    <header class="nav" id="nav">
+      <a class="brand" href="#hero" data-goto="hero">Farside</a>
+      <nav aria-label="Chapters">
+        <a href="#build" data-goto="build">The ship</a>
+        <a href="#launch" data-goto="launch">Launch</a>
+        <a href="#system" data-goto="system">Worlds</a>
+        <a href="#missions" data-goto="missions">Missions</a>
+        <a href="#join" data-goto="join">Careers</a>
+      </nav>
+      <button class="sound" id="sound" type="button" aria-pressed="false">
+        <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="sound-label">Sound off</span>
+      </button>
+    </header>
+
+    <aside class="rail" aria-hidden="true">
+      <div class="rail-track"><span class="rail-fill" id="railFill"></span></div>
+      <ol>
+        <li data-ch="hero">Orbit</li>
+        <li data-ch="build">Build</li>
+        <li data-ch="launch">Launch</li>
+        <li data-ch="system">Worlds</li>
+        <li data-ch="missions">Missions</li>
+        <li data-ch="join">Join</li>
+      </ol>
+    </aside>
+
+    <main>
+      <!-- Orbit -->
+      <section id="hero" class="hero" data-chapter="hero">
+        <div class="hero-inner">
+          <h1 class="hero-title">
+            <span class="wordmark" aria-hidden="true"><span class="wm-letters">Farside</span></span>
+            <span class="tagline">We build the ships that leave.</span>
+          </h1>
+          <div class="hero-foot">
+            <p class="lede">
+              Farside designs, welds and flies reusable starships from a shipyard on the coast. Each flight goes a little farther than the last.
+            </p>
+            <a class="btn foil" href="#build" data-goto="build">Follow the build</a>
+          </div>
+        </div>
+        <p class="scroll-hint" aria-hidden="true"><span></span>Scroll to take the ship apart</p>
+      </section>
+
+      <!-- Build -->
+      <section id="build" class="chapter build" data-chapter="build">
+        <div class="sticky">
+          <div class="panel panel-left">
+            <h2>Every ship starts as a stack of steel rings.</h2>
+            <p class="intro">
+              Longreach is 52 metres of stainless steel, welded from rings nine metres across in a hangar beside the pad. We finish one every three weeks.
+            </p>
+            <ol class="steps">
+              <li data-step="0" data-n="1">
+                <h3>Engine bay</h3>
+                <p>Six engines burning methane and liquid oxygen. Three small bells for the thick air at sea level, three wide ones for vacuum.</p>
+              </li>
+              <li data-step="1" data-n="2">
+                <h3>Propellant tanks</h3>
+                <p>Two tanks that share one domed wall. Together they hold 1,200 tonnes of propellant, chilled to −180 °C.</p>
+              </li>
+              <li data-step="2" data-n="3">
+                <h3>Heat shield and flaps</h3>
+                <p>18,000 ceramic tiles on the side that meets the fire on the way home. Four flaps steer the fall, like a skydiver's arms.</p>
+              </li>
+              <li data-step="3" data-n="4">
+                <h3>Crew deck</h3>
+                <p>Room for twelve people, a galley, and a row of windows that face home.</p>
+              </li>
+            </ol>
+          </div>
+          <dl class="specs" id="specs">
+            <div><dt>Height</dt><dd>52 m</dd></div>
+            <div><dt>Diameter</dt><dd>9 m</dd></div>
+            <div><dt>Payload to orbit</dt><dd>150 t</dd></div>
+            <div><dt>Flights per ship</dt><dd>100+</dd></div>
+          </dl>
+          <div class="callout" id="callout" aria-hidden="true">
+            <span class="callout-dot"></span>
+            <span class="callout-body">
+              <span class="callout-line"></span>
+              <span class="callout-text" id="calloutText"></span>
+            </span>
+          </div>
+          <div class="dim-label" id="dimLabel" aria-hidden="true">52 m</div>
+        </div>
+      </section>
+
+      <!-- Launch -->
+      <section id="launch" class="chapter launch" data-chapter="launch">
+        <div class="sticky">
+          <div class="panel panel-left">
+            <h2>Leaving takes eight minutes.</h2>
+            <p class="intro">From the coast at dawn to an orbit 200 km up. Keep scrolling to fly it.</p>
+            <ol class="events" id="events">
+              <li><time>T+0:00</time><span>Liftoff</span></li>
+              <li><time>T+1:02</time><span>Peak air pressure on the hull</span></li>
+              <li><time>T+2:40</time><span>Sea-level engines shut down</span></li>
+              <li><time>T+7:52</time><span>Main engine cut-off</span></li>
+              <li><time>T+8:10</time><span>In orbit</span></li>
+            </ol>
+          </div>
+          <div class="telemetry" id="telemetry">
+            <div class="t-row t-clock">
+              <span class="t-label">Mission clock</span>
+              <span class="t-val" id="tClock">T−0:10</span>
+            </div>
+            <div class="t-row">
+              <span class="t-label">Altitude</span>
+              <span class="t-val"><b id="tAlt">0.0</b><small>km</small></span>
+            </div>
+            <div class="t-row">
+              <span class="t-label">Speed</span>
+              <span class="t-val"><b id="tVel">0</b><small>km/h</small></span>
+            </div>
+            <div class="t-row t-thrust">
+              <span class="t-label">Thrust</span>
+              <span class="t-meter"><span id="tThrust"></span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solar system -->
+      <section id="system" class="chapter system" data-chapter="system">
+        <div class="sticky">
+          <div class="labels" id="labels"></div>
+          <div class="panel panel-left">
+            <h2>Then the long part begins.</h2>
+            <p class="intro">Eight planets, and a ship built to reach all of them. Pick one to see the distance and how long Longreach takes to get there.</p>
+            <ul class="planet-list" id="planetList"></ul>
+          </div>
+          <article class="planet-card" id="planetCard" aria-live="polite" hidden>
+            <h3 id="pcName"></h3>
+            <p id="pcNote"></p>
+            <dl>
+              <div><dt>From the Sun</dt><dd id="pcAu"></dd></div>
+              <div><dt>Length of day</dt><dd id="pcDay"></dd></div>
+              <div><dt>Gravity</dt><dd id="pcGravity"></dd></div>
+              <div><dt>Moons</dt><dd id="pcMoons"></dd></div>
+              <div><dt>Average temperature</dt><dd id="pcTemp"></dd></div>
+              <div class="pc-transit"><dt>Longreach transit</dt><dd id="pcTransit"></dd></div>
+            </dl>
+            <button class="text-btn" id="pcClose" type="button">Back to all planets</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Missions -->
+      <section id="missions" class="chapter missions" data-chapter="missions">
+        <div class="sticky">
+          <div class="panel panel-right">
+            <h2>Where we are going, in order.</h2>
+            <div class="mission-stage" id="missionStage" aria-live="polite"></div>
+            <ol class="mission-years" id="missionYears"></ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- Join -->
+      <section id="join" class="join" data-chapter="join">
+        <div class="join-inner">
+          <h2 class="join-title">Come build the next one.</h2>
+          <p>
+            We are hiring welders, avionics and flight software engineers, propulsion test crews, and people who don't mind a 4 a.m. start on the coast.
+          </p>
+          <div class="join-actions">
+            <a class="btn foil" href="#join">See open roles</a>
+            <a class="btn line" href="#join">Get launch alerts</a>
+          </div>
+        </div>
+        <footer class="foot">
+          <p>Farside and Longreach are fictional, imagined for this site. The planetary data is real.</p>
+          <p>Rendered live in your browser with Three.js.</p>
+        </footer>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
